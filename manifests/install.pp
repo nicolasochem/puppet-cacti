@@ -26,7 +26,7 @@ class cacti::install
     $apache:
       ensure  => installed;
     $cacti:
-      require => [ Package[$snmp_utils], Yumrepo[ "RepoForge" ] ];
+      require => [ Package[$snmp_utils] ];
     $snmp_utils:;
   } # package
 
