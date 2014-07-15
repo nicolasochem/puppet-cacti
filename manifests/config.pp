@@ -13,21 +13,23 @@ class cacti::config
 
   file {
     $cacti_dir:
-      require => [ Package[$cacti] ],
+      require => [ Package[$cacti], Class['apache'] ],
       recurse => true,
       owner   => $apache_user,
       group   => $apache_group;
     $config_php:
       source  => $config_php_src,
-      require => [ Package[$cacti] ],
+      require => [ Package[$cacti], Class['apache'] ],
       owner   => $apache_user,
       group   => $apache_group,
       mode    => 640;
     $php_ini:
-      source  => $php_ini_src;
+      source  => $php_ini_src,
+      require => Class['apache'];
     $cacti_conf:
       source  => $cacti_conf_src,
-      notify  => Service[$apache];
+      notify  => Service[$apache],
+      require => Class['apache'];
     $cron_cacti:
       content => $cron_cacti_content,
       require => Package[$cacti],
