@@ -27,8 +27,6 @@ class cacti::install
   include mysql::server
 
   package {
-    $apache:
-      ensure  => installed;
     $cacti:
       require => [ Package[$snmp_utils] ];
     $snmp_utils:;
