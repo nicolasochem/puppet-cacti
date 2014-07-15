@@ -19,6 +19,10 @@ class cacti::install
 
 ) inherits cacti::params {
 
+  class { 'apache':
+      mpm_module => 'prefork',
+  }
+
   include apache::php
   include mysql::server
 
