@@ -8,11 +8,6 @@
 class cacti::service inherits cacti::params{
 
   service {
-    $apache:
-      ensure    => running,
-      enable    => true,
-      hasstatus => true,
-      require   => Class['cacti::install'];
     $cron:
       ensure    => running,
       enable    => true,
