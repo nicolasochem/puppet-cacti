@@ -28,8 +28,7 @@ class cacti::install
 
   package {
     $cacti:
-      require => [ Package[$snmp_utils], Yumrepo[ "RepoForge" ] ],
-      install_options => { "--disablerepo" => "*", "--enablerepo" => "RepoForge" },
+      require => [ Package[$snmp_utils], Yumrepo[ "RepoForge" ] ];
     $snmp_utils:;
   } # package
 
